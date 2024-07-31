@@ -31,6 +31,7 @@
 --
 SELECT 
   query_name, 
+  -- sum / count is faster than avg
   round(sum(rating::numeric / position) / count(*), 2) as quality, 
   round(100.0 * count(CASE WHEN rating < 3 THEN 1 END) / count(*), 2) as poor_query_percentage
 FROM Queries
